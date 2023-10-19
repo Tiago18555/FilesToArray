@@ -1,6 +1,6 @@
 ﻿namespace FilesToArray
 {
-    partial class Form1
+    partial class F_Main
     {
         /// <summary>
         ///  Required designer variable.

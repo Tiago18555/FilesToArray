@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace FilesToArray
 {
-    public partial class Form1 : Form
+    public partial class F_Main : Form
     {
-        public Form1()
+        public F_Main()
         {
             InitializeComponent();
         }
