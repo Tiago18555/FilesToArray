@@ -6,21 +6,9 @@ namespace FilesToArray
 {
     public partial class F_Main : Form
     {
-        public F_Main()
-        {
-            InitializeComponent();
-        }
-
-        private void openFileDiag_HelpRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rtbOutput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        public F_Main() => InitializeComponent();   
+        private void openFileDiag_HelpRequest(object sender, EventArgs e) { }
+        private void rtbOutput_TextChanged(object sender, EventArgs e) { }
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             if (openFileDiag.ShowDialog() == DialogResult.OK)
@@ -42,11 +30,8 @@ namespace FilesToArray
                     rtbOutput.Text = rtbOutput.Text.Remove(rtbOutput.Text.Length - 2);
                     rtbOutput.Text += "\n]";
 
-                    MessageBox.Show("Texto copiado para área de transferência");
-
-                    rtbOutput.ForeColor = Color.Green;
-
-                    Clipboard.SetText(rtbOutput.Text);
+                    rtbOutput.ForeColor = Color.Black;
+                    label1.Text = "OUTPUT";
                 }
                 catch (Exception ex)
                 {
@@ -54,6 +39,26 @@ namespace FilesToArray
                                     $"Detalhes:\n\n{ex.StackTrace}");
                 }
             }
+        }
+
+
+        private void rtbOutput_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(rtbOutput.Text))
+            {
+                MessageBox.Show("Please, choose a folder first");
+                return;
+            }
+
+            Clipboard.SetText(rtbOutput.Text);
+            rtbOutput.ForeColor = Color.Green;
+            this.label1.Text = "COPIED !";
+
+        }
+
+        private void F_Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

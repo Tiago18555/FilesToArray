@@ -40,11 +40,14 @@
             // 
             // rtbOutput
             // 
+            this.rtbOutput.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rtbOutput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rtbOutput.Location = new System.Drawing.Point(12, 70);
             this.rtbOutput.Name = "rtbOutput";
             this.rtbOutput.Size = new System.Drawing.Size(776, 319);
             this.rtbOutput.TabIndex = 0;
             this.rtbOutput.Text = "";
+            this.rtbOutput.Click += new System.EventHandler(this.rtbOutput_Click);
             this.rtbOutput.TextChanged += new System.EventHandler(this.rtbOutput_TextChanged);
             // 
             // label1
@@ -66,7 +69,7 @@
             this.btnOpenFile.UseVisualStyleBackColor = true;
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
-            // Form1
+            // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,8 +77,9 @@
             this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rtbOutput);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "F_Main";
+            this.Text = "¿ Choose a File ?";
+            this.Load += new System.EventHandler(this.F_Main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
