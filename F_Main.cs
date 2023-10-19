@@ -6,7 +6,7 @@ namespace FilesToArray
 {
     public partial class F_Main : Form
     {
-        public F_Main() => InitializeComponent();   
+        public F_Main() => InitializeComponent();
         private void openFileDiag_HelpRequest(object sender, EventArgs e) { }
         private void rtbOutput_TextChanged(object sender, EventArgs e) { }
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -29,9 +29,9 @@ namespace FilesToArray
 
                     rtbOutput.Text = rtbOutput.Text.Remove(rtbOutput.Text.Length - 2);
                     rtbOutput.Text += "\n]";
+                    label1.Text = $"Files Loaded : {files.Length}";
+                    rtbOutput.ForeColor = Color.FromArgb(255, 120, 120);
 
-                    rtbOutput.ForeColor = Color.Black;
-                    label1.Text = "OUTPUT";
                 }
                 catch (Exception ex)
                 {
@@ -58,7 +58,7 @@ namespace FilesToArray
 
         private void F_Main_Load(object sender, EventArgs e)
         {
-
+            label1.Text = "OUTPUT";
         }
     }
 }

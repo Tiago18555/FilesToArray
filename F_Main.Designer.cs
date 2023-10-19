@@ -28,61 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileDiag = new System.Windows.Forms.FolderBrowserDialog();
-            this.rtbOutput = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnOpenFile = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            openFileDiag = new FolderBrowserDialog();
+            rtbOutput = new RichTextBox();
+            label1 = new Label();
+            btnOpenFile = new Button();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            SuspendLayout();
             // 
             // openFileDiag
             // 
-            this.openFileDiag.HelpRequest += new System.EventHandler(this.openFileDiag_HelpRequest);
+            openFileDiag.HelpRequest += openFileDiag_HelpRequest;
             // 
             // rtbOutput
             // 
-            this.rtbOutput.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rtbOutput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rtbOutput.Location = new System.Drawing.Point(12, 70);
-            this.rtbOutput.Name = "rtbOutput";
-            this.rtbOutput.Size = new System.Drawing.Size(776, 319);
-            this.rtbOutput.TabIndex = 0;
-            this.rtbOutput.Text = "";
-            this.rtbOutput.Click += new System.EventHandler(this.rtbOutput_Click);
-            this.rtbOutput.TextChanged += new System.EventHandler(this.rtbOutput_TextChanged);
+            rtbOutput.Cursor = Cursors.Hand;
+            rtbOutput.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            rtbOutput.ForeColor = Color.FromArgb(255, 100, 100);
+            rtbOutput.Location = new Point(12, 70);
+            rtbOutput.Name = "rtbOutput";
+            rtbOutput.Size = new Size(776, 319);
+            rtbOutput.TabIndex = 0;
+            rtbOutput.Text = "";
+            rtbOutput.Click += rtbOutput_Click;
+            rtbOutput.TextChanged += rtbOutput_TextChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(737, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "OUTPUT";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(12, 47);
+            label1.Name = "label1";
+            label1.Size = new Size(64, 20);
+            label1.TabIndex = 1;
+            label1.Text = "OUTPUT";
+            label1.TextAlign = ContentAlignment.TopRight;
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(15, 33);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenFile.TabIndex = 2;
-            this.btnOpenFile.Text = "&OPEN FILE";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            btnOpenFile.BackColor = Color.FromArgb(224, 224, 224);
+            btnOpenFile.Location = new Point(692, 15);
+            btnOpenFile.Name = "btnOpenFile";
+            btnOpenFile.Size = new Size(96, 52);
+            btnOpenFile.TabIndex = 2;
+            btnOpenFile.Text = "&OPEN FOLDER";
+            btnOpenFile.UseVisualStyleBackColor = false;
+            btnOpenFile.Click += btnOpenFile_Click;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // F_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 401);
-            this.Controls.Add(this.btnOpenFile);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.rtbOutput);
-            this.Name = "F_Main";
-            this.Text = "¿ Choose a File ?";
-            this.Load += new System.EventHandler(this.F_Main_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 401);
+            Controls.Add(btnOpenFile);
+            Controls.Add(label1);
+            Controls.Add(rtbOutput);
+            Name = "F_Main";
+            Text = "¿ Choose a File ?";
+            Load += F_Main_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -91,5 +102,6 @@
         private RichTextBox rtbOutput;
         private Label label1;
         private Button btnOpenFile;
+        private ErrorProvider errorProvider1;
     }
 }
