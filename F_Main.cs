@@ -1,3 +1,4 @@
+using System.CodeDom;
 using System.Diagnostics;
 using System.Security;
 using System.Windows.Forms;
@@ -9,6 +10,12 @@ namespace FilesToArray
         public F_Main() => InitializeComponent();
         private void openFileDiag_HelpRequest(object sender, EventArgs e) { }
         private void rtbOutput_TextChanged(object sender, EventArgs e) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             if (openFileDiag.ShowDialog() == DialogResult.OK)
@@ -18,25 +25,30 @@ namespace FilesToArray
                     string folderPath = openFileDiag.SelectedPath;
                     string[] files = Directory.GetFiles(folderPath);
 
+                    DateTime dt = DateTime.Now;
+
                     rtbOutput.Clear();
-                    rtbOutput.Text += "[\n";
+                    rtbOutput.Text += "\tfiles = [\n";
 
                     foreach (string file in files)
                     {
                         string fileName = Path.GetFileName(file);
-                        rtbOutput.Text += $"\"./sample_data/{fileName}\",\n";
+                        rtbOutput.Text += $"\t\t\"./sample_data/{fileName}\",\n";
                     }
 
                     rtbOutput.Text = rtbOutput.Text.Remove(rtbOutput.Text.Length - 2);
-                    rtbOutput.Text += "\n]";
+                    rtbOutput.Text += "\t]\n";
                     label1.Text = $"Files Loaded : {files.Length}";
                     rtbOutput.ForeColor = Color.FromArgb(255, 120, 120);
 
                 }
+                catch (DirectoryNotFoundException ex)
+                {
+                    MessageBox.Show($"Error: No such file or directory : {openFileDiag.SelectedPath}");
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Erro ao acessar a pasta.\n\nMensagem de erro: {ex.Message}\n\n" +
-                                    $"Detalhes:\n\n{ex.StackTrace}");
+                    MessageBox.Show($"Fatal: Unknown error\n{ex.Message}");
                 }
             }
         }
@@ -53,7 +65,6 @@ namespace FilesToArray
             Clipboard.SetText(rtbOutput.Text);
             rtbOutput.ForeColor = Color.Green;
             this.label1.Text = "COPIED !";
-
         }
 
         private void F_Main_Load(object sender, EventArgs e)
