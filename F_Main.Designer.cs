@@ -51,7 +51,7 @@
             rtbOutput.Size = new Size(776, 319);
             rtbOutput.TabIndex = 0;
             rtbOutput.Text = "";
-            rtbOutput.Click += rtbOutput_Click;
+            rtbOutput.Click += RtbOutput_click;
             rtbOutput.TextChanged += rtbOutput_TextChanged;
             // 
             // label1
@@ -74,7 +74,7 @@
             btnOpenFile.TabIndex = 2;
             btnOpenFile.Text = "&OPEN FOLDER";
             btnOpenFile.UseVisualStyleBackColor = false;
-            btnOpenFile.Click += btnOpenFile_Click;
+            btnOpenFile.Click += BtnOpenFile_click;
             // 
             // errorProvider1
             // 

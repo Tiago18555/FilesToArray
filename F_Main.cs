@@ -1,6 +1,7 @@
 using System.CodeDom;
 using System.Diagnostics;
 using System.Security;
+using System.Text;
 using System.Windows.Forms;
 
 namespace FilesToArray
@@ -16,7 +17,7 @@ namespace FilesToArray
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOpenFile_Click(object sender, EventArgs e)
+        private void BtnOpenFile_click(object sender, EventArgs e)
         {
             if (openFileDiag.ShowDialog() == DialogResult.OK)
             {
@@ -25,22 +26,23 @@ namespace FilesToArray
                     string folderPath = openFileDiag.SelectedPath;
                     string[] files = Directory.GetFiles(folderPath);
 
-                    DateTime dt = DateTime.Now;
-
-                    rtbOutput.Clear();
-                    rtbOutput.Text += "\tfiles = [\n";
+                    StringBuilder outputText = new StringBuilder();
+                    outputText.Append("    files = [\n");
 
                     foreach (string file in files)
                     {
                         string fileName = Path.GetFileName(file);
-                        rtbOutput.Text += $"\t\t\"./sample_data/{fileName}\",\n";
+                        outputText.AppendFormat("        \"./sample_data/{0}\",\n", fileName);
                     }
 
-                    rtbOutput.Text = rtbOutput.Text.Remove(rtbOutput.Text.Length - 2);
-                    rtbOutput.Text += "\t]\n";
+                    outputText.Length -= 2; // Remove the last comma and newline
+                    outputText.Append("    ]\n");
+
+                    rtbOutput.Clear();
+                    rtbOutput.Text = outputText.ToString();
+
                     label1.Text = $"Files Loaded : {files.Length}";
                     rtbOutput.ForeColor = Color.FromArgb(255, 120, 120);
-
                 }
                 catch (DirectoryNotFoundException ex)
                 {
@@ -54,7 +56,9 @@ namespace FilesToArray
         }
 
 
-        private void rtbOutput_Click(object sender, EventArgs e)
+
+
+        private void RtbOutput_click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(rtbOutput.Text))
             {
