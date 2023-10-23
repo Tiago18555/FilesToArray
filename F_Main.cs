@@ -11,12 +11,6 @@ namespace FilesToArray
         public F_Main() => InitializeComponent();
         private void openFileDiag_HelpRequest(object sender, EventArgs e) { }
         private void rtbOutput_TextChanged(object sender, EventArgs e) { }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnOpenFile_click(object sender, EventArgs e)
         {
             if (openFileDiag.ShowDialog() == DialogResult.OK)
@@ -54,10 +48,6 @@ namespace FilesToArray
                 }
             }
         }
-
-
-
-
         private void RtbOutput_click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(rtbOutput.Text))
@@ -75,5 +65,7 @@ namespace FilesToArray
         {
             label1.Text = "OUTPUT";
         }
+
+        private void arrayToFilesMenu_Click(object sender, EventArgs e) => new F_ArrayToFiles().Show();
     }
 }
