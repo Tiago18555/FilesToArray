@@ -107,6 +107,7 @@
             this.MinimumSize = new System.Drawing.Size(200, 440);
             this.Name = "F_Main";
             this.Text = "¿ Choose a File ?";
+            this.Load += new System.EventHandler(this.F_Main_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

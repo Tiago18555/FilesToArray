@@ -38,7 +38,7 @@ namespace FilesToArray
                     label1.Text = $"Files Loaded : {files.Length}";
                     rtbOutput.ForeColor = Color.FromArgb(255, 120, 120);
                 }
-                catch (DirectoryNotFoundException ex)
+                catch (DirectoryNotFoundException)
                 {
                     MessageBox.Show($"Error: No such file or directory : {openFileDiag.SelectedPath}");
                 }
@@ -66,6 +66,15 @@ namespace FilesToArray
             label1.Text = "OUTPUT";
         }
 
-        private void arrayToFilesMenu_Click(object sender, EventArgs e) => new F_ArrayToFiles().Show();
+        private void arrayToFilesMenu_Click(object sender, EventArgs e)
+        {
+            new F_ArrayToFiles().Show();
+            this.Hide();
+        }
+
+        private void F_Main_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
